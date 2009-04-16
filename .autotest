@@ -1,23 +1,26 @@
-# -*- ruby -*-
+module Autotest::GnomeNotify
 
-require 'autotest/restart'
+  # Time notification will be displayed before disappearing automatically
+  EXPIRATION_IN_SECONDS = 2
+  ERROR_STOCK_ICON = "gtk-dialog-error"
+  SUCCESS_STOCK_ICON = "gtk-dialog-info"
 
-# Autotest.add_hook :initialize do |at|
-#   at.extra_files << "../some/external/dependency.rb"
-#
-#   at.libs << ":../some/external"
-#
-#   at.add_exception 'vendor'
-#
-#   at.add_mapping(/dependency.rb/) do |f, _|
-#     at.files_matching(/test_.*rb$/)
-#   end
-#
-#   %w(TestA TestB).each do |klass|
-#     at.extra_class_map[klass] = "test/test_misc.rb"
-#   end
-# end
+  # Convenience method to send an error notification message
+  #
+  # [stock_icon]   Stock icon name of icon to display
+  # [title]        Notification message title
+  # [message]      Core message for the notification
+  def self.notify stock_icon, title, message
+    options = "-t #{EXPIRATION_IN_SECONDS * 1000} -i #{stock_icon}"
+    system "notify-send #{options} '#{title}' '#{message}'"
+  end
 
-# Autotest.add_hook :run_command do |at|
-#   system "rake build"
-# end
+  Autotest.add_hook :red do |at|
+    notify ERROR_STOCK_ICON, "Tests failed", "#{at.files_to_test.size} tests failed"
+  end
+
+  Autotest.add_hook :green do |at|
+    notify SUCCESS_STOCK_ICON, "All tests passed, good job!", ""
+  end
+
+end
