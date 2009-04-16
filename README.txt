@@ -1,32 +1,32 @@
 = smsformat
 
-* FIX (url)
+http://github.com/gard/smsformat/tree/master
 
 == DESCRIPTION:
 
-FIX (describe your package)
+A simple library to create different sms messages
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Wappush formatter
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+	Smsformat.wap_push("Google","http://m.google.com"))
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* None
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install gard-smsformat
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2009 FIX
+Copyright (c) 2009 honningso.com
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
