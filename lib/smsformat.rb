@@ -1,7 +1,7 @@
 class Smsformat
   VERSION = '1.0.0'
   
-  def Smsformat.wap_push(title, url, hex_delimiter = "", header_delimiter = "")
+  def Smsformat.wap_push(title, url, hex_delimiter = "", header_delimiter = nil)
     # remove protokoll if present since we are adding it with WBXML "0C"
     url.gsub!(/^http:\/\//,'')
     # setup the dataheader
@@ -16,8 +16,9 @@ class Smsformat
     data += "84" + hex_delimiter
     # originator port = 9200 WAP connectionless session service Protocol: WSP/Datagram
     data += "23" + hex_delimiter
-    data += "F0" + hex_delimiter
-    data += header_delimiter
+    data += "F0"
+    data += hex_delimiter if header_delimiter.nil?
+    data += header_delimiter unless header_delimiter.nil?
     # setup the data payload
     # TID
     data += "01" + hex_delimiter
