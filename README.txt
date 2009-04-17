@@ -6,9 +6,11 @@ http://github.com/gard/smsformat/tree/master
 
 A simple library to create different sms messages
 
-== FEATURES/PROBLEMS:
+== FEATURES
 
-* Wappush formatter
+== PROBLEMS:
+
+* wap_push method should check title/url length 
 
 == SYNOPSIS:
 
@@ -21,6 +23,13 @@ A simple library to create different sms messages
 == INSTALL:
 
 * sudo gem install gard-smsformat
+
+== RESOURCES:
+
+* http://www.wapforum.org/what/technical.htm (Specifications)
+* http://www.w3.org/TR/wbxml/ (wbxml specification)
+* http://sw.nokia.com/id/23e93d2d-0f25-4799-9b03-1ec9b5cf775a/Smart_Messaging_FAQ_v2_0.pdf
+* http://www.commzgate.com/blog/2007/06/how-to-format-a-wap-push-message-as-a-hexadecimal-string/
 
 == LICENSE:
 
